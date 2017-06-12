@@ -1,0 +1,22 @@
+ 
+const byte LED_PIN = 3;
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(LED_PIN, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int direction = 1;
+  // this for loop just reverses back within
+  // itself
+  for (byte i= 0; i <= 255;){
+    analogWrite(LED_PIN, i);
+     i += direction;
+    delay(30);
+    if (i == 255 || i == 0){
+      direction *= -1;
+      delay(50);
+    }
+  }
+}
