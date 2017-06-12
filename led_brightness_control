@@ -1,0 +1,23 @@
+ 
+const byte LED_PIN = 3;
+// instead of this we could have used 5V power
+// pin, but anyway..
+const byte POTENTIOMETER_POWER = 8;
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(POTENTIOMETER_POWER, OUTPUT);
+  digitalWrite(POTENTIOMETER_POWER, HIGH);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+ int input = analogRead(A0);
+ // because the input reads the range 0-1024
+ // but our analog ouput range 0-255
+ // scaling down the input.
+ input = input/4;
+ analogWrite(LED_PIN, input);
+ Serial.println(input, DEC);
+}
